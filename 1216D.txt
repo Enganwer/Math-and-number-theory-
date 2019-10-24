@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ main()
+{
+    int n ;
+    cin >> n ;
+    int gcd ;
+    vector < int > vc ;
+    int mx = INT_MIN;
+    for (int i = 0 ; i< n;i++){
+            int tk ;
+         cin >> tk ;
+        mx = max(mx,tk);
+        vc.push_back(tk);
+    }
+    gcd = 0;
+    for (int i = 0 ; i< n ;i++){
+         gcd = __gcd(gcd,mx - vc[i]);
+    }
+    long long res = 0 ;
+    for (int i = 0 ; i < n ;i++){
+        res += (mx-vc[i])/gcd;
+    }
+    cout << res << " " << gcd;
+ 
+}

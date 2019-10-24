@@ -1,0 +1,41 @@
+using namespace std;
+#include<bits/stdc++.h>
+ 
+long long GCD(long long x, long long y)
+{
+    return y ? GCD(y, x%y) : x ;
+}
+long long LCM(long long x, long long y)
+{
+    return x / GCD(x, y) * y;
+}
+#define sf1(a)                scanf("%d", &a)
+#define sf2(a,b)              scanf("%d %d",&a, &b)
+#define sf3(a,b,c)            scanf("%d %d %d", &a, &b, &c)
+#define sf4(a,b,c,d)          scanf("%d %d %d %d", &a, &b, &c, &d)
+ 
+#define sf1ll(a)              scanf("%I64d", &a)
+#define sf2ll(a,b)            scanf("%lld %lld", &a, &b)
+#define sf3ll(a,b,c)          scanf("%I64d %I64d %I64d", &a, &b, &c)
+#define sf4ll(a,b,c,d)        scanf("%I64d %I64d %I64d %I64d", &a, &b, &c, &d)
+int main()
+{
+ 
+    long long l,r,x,y;
+    scanf("%I64d %I64d %I64d %I64d",&l,&r,&x,&y);
+    long long s = 0 ;
+    long long  xx = x, yy =y ;
+    long long  c = 1;
+    while (xx <= yy )
+    {
+        xx = x*c, yy = y/c;
+        if (xx > yy )break;
+        if (GCD(xx,yy)==x&&LCM(xx,yy)==y&& xx >= l && xx <= r && yy >=l && yy <= r &&xx <= yy  )
+        {
+            if (xx != yy)s += 2 ;
+            else s++;
+        }
+        c++;
+    }
+    printf("%I64d",s);
+}

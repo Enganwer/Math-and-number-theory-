@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+ 
+ 
+using namespace std;
+ 
+ 
+ 
+long long getDivisors (long long  n)
+{
+    set<long long > sz;
+    for(long long  i=1; i*i<=n; i++)
+    {
+        if(n % i == 0)
+        {
+            sz.insert(i);
+            if(n != i * i)
+                sz.insert(n / i);
+        }
+    }
+    return sz.size();
+}
+int main()
+{
+    long long x ;
+    cin >> x ;
+    cout<<getDivisors(x)<<endl;
+}

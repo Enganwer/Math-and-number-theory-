@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+set < int > allfac ;
+void getFactors(long long  n){
+ 
+  long long  tmp = n, cnt = 1;
+  for(long long  i=2; i*i<=n; i++){
+    long long x = 1;
+    while(tmp % i == 0){
+ 
+      allfac.insert(i);
+      tmp /= i;
+      ++x;
+    }
+    cnt *= x;
+  }
+  if(tmp != 1){
+    allfac.insert(tmp);
+    cnt *= 2;
+  }
+}
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+   int n,tk  ;
+   scanf("%d",&n);
+   vector < pair   < int , int > > pr ;
+   int a , b ;
+   scanf("%d%d",&a,&b);
+   getFactors(a);
+   getFactors(b);
+   for (int i = 1 ; i <n ;i++){
+   scanf("%d%d",&a,&b);
+    pr.push_back({a,b});
+   }
+   for (int j  : allfac){
+     bool flag = true;
+     for (int i = 0 ; i< pr.size();i++){
+         if (pr[i].first%j && pr[i].second%j) {flag = false ; break;}
+     }
+     if (flag) printf("%d",j),exit(0);
+   }
+    puts("-1");
+}
+ 

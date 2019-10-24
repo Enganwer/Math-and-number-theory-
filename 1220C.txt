@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ main()
+{
+ long long n ;
+ cin >> n ;
+ vector < long long > vc ;
+ vector < long long > f ;
+ for (int i = 0 ; i < n ;i++){
+        bool flag =true;
+    for (int j = 0 ; j <n ;j++){
+         long long tk ;
+         cin >> tk;
+         if (!tk) flag = false ;
+         if (!j && flag)f.push_back(tk);
+         if (flag) vc.push_back(tk);
+    }
+ }
+  long long res =(long long )vc[1]*(long long )vc[0];
+ res = sqrt(res / vc[2] );
+ 
+  cout << res << " ";
+  for (int i = 0 ; i < f.size();i++){
+    cout << f[i]/res << " ";
+  }
+ 
+}

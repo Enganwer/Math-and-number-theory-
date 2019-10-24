@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+ map <long long , bool > vis ;
+int main(){
+   long long  n , a , b , c, cnt=0;
+  cin >> n >> a ;
+  const long long  N = 1e8;
+  a = min (N , a) ;
+ for (long long  i = 1 ; i<=a ; i++){
+     cnt =  n%i ;
+     if (!vis[cnt]) vis[cnt]=true ;
+     else {return 0 * puts("No");}
+ }
+ 
+    return 0 * puts("Yes");
+ 
+    }

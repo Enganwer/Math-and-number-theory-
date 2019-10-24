@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ int n , ans ;
+ vector < int > st ;
+bool chk(int mid)
+        {
+    long long tmp = ans ;
+    int num = n ;
+        for(int i=num-1;i>0;i--)
+        {
+            int md = st[i]/2 ;
+            for(int j=md;j>1;j--)
+                if(st[i]%j==0)
+                {
+                tmp -=(st[i]+st[0]);
+                tmp+=(st[i]/j)+(st[0]*j) ;
+                if(tmp<=mid) return 1;
+               tmp=ans;
+                }
+        }
+                    return 0;
+        }
+int main()
+{
+                scanf("%d",&n);
+                for(int i=0;i<n;i++)
+                {
+                    int tk;
+                    scanf("%d",&tk);
+                    ans+=tk;
+                    st.push_back(tk);
+                }
+                sort(st.begin(),st.end());
+                int s =0 , en=ans;
+                while(s<en)
+                {
+                    int m = (s+en)/2;
+                    if(chk(m)) en=m;
+                    else s= m+1;
+                }
+                printf("%d",en);
+}

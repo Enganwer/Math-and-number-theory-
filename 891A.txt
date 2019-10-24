@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+long long GCD(long long a, long long b){
+    return b ? GCD(b, a%b) : a ;
+}
+const int inf=2e3+9;
+int a[inf];
+int main()
+{
+    int n , g ,ans=0,ones=0,consk=0; bool flag = false ;
+    long long tk;
+    scanf("%d",&n);
+  int vc[inf] ;
+ 
+  for  (int i=0;i<n;i++) {scanf("%d",&tk) ;  vc[i]=tk; if (tk==1) ones++; }
+   if (ones) {printf("%d",n-ones); return 0;}
+   else{
+ 
+      for (int i =0 ; i <n; i++){
+ for ( int j=0 ; j <n-1; j++){
+ if(GCD(vc[j],vc[j+1]) == 1) {printf("%d",n+i);
+  return 0 ;}
+ vc[j]=GCD(vc[j],vc[j+1]);
+ 
+  }
+ 
+  }
+  cout << -1 ;
+  }
+ 
+}

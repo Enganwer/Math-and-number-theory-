@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+int vis[100005];
+int main(){
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+    int n ;
+    cin >> n ;
+    vector < int > vc;
+    for (int i = 0 ; i < n ;i++){
+        int x;
+        cin >> x ;
+        vc.push_back(x);
+    }
+    sort(vc.begin(),vc.end());
+    for (int i = n-1 ;i >= 0 ;i--){
+      if (vis[vc[i]] || vc.back()%vc[i]!=0 )
+        cout << vc[i] << " "<< vc.back(),exit(0);
+      else if (!vis[vc[i]] && vc.back()%vc[i]==0)
+        vis[vc[i]]=1;
+    }
+}

@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+map <long double , int > mp ;
+int main()
+{
+ios_base::sync_with_stdio(0);
+    cin.tie(0);
+     int n ;
+     vector <long  long> a , b ;
+     cin >> n ;
+     for (int i = 0 ; i < n ;i++){
+        long long  tk ;
+        cin >> tk ;
+        a.push_back(tk);
+     }
+     set < long double > st;
+     int rem = 0 ;
+     for (int i = 0 ; i < n ;i++){
+        long long  tk ;
+        cin >> tk ;
+        b.push_back(tk);
+        if (tk == a[i] && tk == 0) rem++;
+        if (a[i]==0) continue;
+        long long  gcd = __gcd(tk,a[i]);
+         a[i]/=gcd;
+         tk/=gcd;
+        long double in = ((double)tk/(double)a[i]);
+ 
+        mp[-in]++;
+        st.insert(-in);
+     }
+     int res = 0 ;
+     for (long double i : st){
+        res=max(res,mp[i]);
+     }
+     cout << res+rem;
+ 
+ 
+}
